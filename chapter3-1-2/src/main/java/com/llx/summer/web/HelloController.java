@@ -1,5 +1,6 @@
 package com.llx.summer.web;
 
+import com.llx.summer.exception.MyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,5 +19,16 @@ public class HelloController {
         map.addAttribute("host","http://11.11.11.11");
         // return模板文件的名称，对应src/main/resources/templates/index.html
         return "index";
+    }
+
+    @RequestMapping("/hello")
+    public String hello() throws Exception{
+        throw new Exception("发生错误,erro!");
+    }
+
+
+    @RequestMapping("/json")
+    public String json() throws MyException{
+        throw new MyException("发生自定义错误！");
     }
 }
